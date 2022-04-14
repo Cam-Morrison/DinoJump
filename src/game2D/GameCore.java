@@ -82,9 +82,7 @@ public abstract class GameCore extends JFrame implements KeyListener {
      */
     private void init(boolean full, int xres, int yres) {
     	
-
         setVisible(true);
-        
         addKeyListener(this);
         setFont(new Font("Dialog", Font.PLAIN, FONT_SIZE));
     }
