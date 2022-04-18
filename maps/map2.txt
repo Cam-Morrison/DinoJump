@@ -5,21 +5,10 @@
 // # character. The dot character always defaults to a blank space 
 // Note that the referenced files should be in the same directory as the
 // tile map.
-#1=1.png
-#2=2.png
-#3=3.png
-#4=4.png
-#5=5.png
-#6=6.png
-#7=7.png
-#8=8.png
-#9=9.png
-#t=10.png
-#e=11.png
-#l=14.png
-#m=15.png
-#r=16.png
-#f=flag.png
+#2=ground.png
+#l=left.png
+#m=middle.png
+#r=right.png
 // The actual tile map is preceded by the #map line
 #map
 ................................................................

@@ -43,7 +43,7 @@ public class TileMap
 	private int mapHeight=0;	// The maps height in tiles
 	private int tileWidth=0;	// The width of a tile in pixels
 	private int tileHeight=0;	// The height of a tile in pixels
-	
+//	
 	// imagemap contains a set of character to image mappings for
 	// quick loop up of the image associated with a given character.
 	private Map<String,Image> imagemap = new HashMap<String,Image>();

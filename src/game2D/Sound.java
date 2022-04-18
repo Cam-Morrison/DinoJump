@@ -5,12 +5,11 @@ import javax.sound.sampled.*;
 
 public class Sound extends Thread
 {
-	public Clip clip;
-	public long time;
+	public Clip audio; //Audio clip
+	public long time; //time stamp of audio clip playing
 	public String filename; // The name of the file to play
 	public boolean finished; // A flag showing that the thread has finished
-
-
+	
 	/**
 	 * Constructor method for the Sound object.
 	 * 
@@ -20,16 +19,21 @@ public class Sound extends Thread
 	{
 		filename = fname;
 	}
-	
+	/**
+	 * Pauses sound at time it was last played at.
+	 */
 	public void pauseSound() {
-		if (clip.isRunning()){
-			this.time = clip.getMicrosecondPosition();
-			clip.stop();
+		if (audio.isRunning()){
+			this.time = audio.getMicrosecondPosition();
+			audio.stop();
 		}
 	}
+	/**
+	 * Plays sound at time it was last played at.
+	 */
 	public void unpauseSound() {
-		clip.setMicrosecondPosition(this.time);
-		clip.start();
+		audio.setMicrosecondPosition(this.time);
+		audio.start();
 	}
 	/**
 	 * run will play the actual sound but you should not call it directly. You
@@ -43,20 +47,19 @@ public class Sound extends Thread
 			AudioInputStream stream = AudioSystem.getAudioInputStream(file);
 			AudioFormat format = stream.getFormat();
 			DataLine.Info info = new DataLine.Info(Clip.class, format);
-			clip = (Clip) AudioSystem.getLine(info);
-			if (filename.equals("dino.mid")){
-				clip.open(stream);
-				clip.start();
-				clip.loop(Clip.LOOP_CONTINUOUSLY);
+			audio = (Clip) AudioSystem.getLine(info);
+			if (filename.contains("mid")){
+				audio.open(stream);
+				audio.start();
+				audio.loop(Clip.LOOP_CONTINUOUSLY);
 			}else{
 				FadeFilterStream filter = new FadeFilterStream(stream);
 				AudioInputStream sound = new AudioInputStream(filter, format, stream.getFrameLength());
-				clip.open(sound);
-				clip.start();
+				audio.open(sound);
+				audio.start();
 			}
 		}catch (Exception e) {} 
-		finally
-		{
+		finally{
 			this.finished = true;
 		}
 	}
