@@ -629,6 +629,7 @@ public class Game extends GameCore implements MouseListener{
 		player.pauseAnimationAtFrame(7);
 		soundControl(new Sound("sounds/roar.wav"));
 		playerDead = true;
+		score = 0;
 		gameOver();
 	}
 	/**
