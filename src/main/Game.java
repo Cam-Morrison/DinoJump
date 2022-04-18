@@ -357,6 +357,10 @@ public class Game extends GameCore implements MouseListener{
 	 * Draws the current state of the game
 	 */
 	public void draw(Graphics2D g) {
+		//Makes it so nothing renders out of players view so fps is higher
+		Rectangle clip = new Rectangle(0,0,screenWidth, screenHeight);
+		g.setClip(clip);
+
 		if(state == gameStage.INTRO) {
 			//Java AWT improved rendering so text is more readable
 			Map<?, ?> desktopHints = (Map<?, ?>) Toolkit.getDefaultToolkit().getDesktopProperty("awt.font.desktophints");
