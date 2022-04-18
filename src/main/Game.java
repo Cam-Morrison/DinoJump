@@ -994,8 +994,6 @@ public class Game extends GameCore implements MouseListener{
 				for(Sprite s : enemies) {
 					stalkPlayer(s);
 				}
-			}else {
-				jump(); //TODO
 			}
 			return;
 		} else {
